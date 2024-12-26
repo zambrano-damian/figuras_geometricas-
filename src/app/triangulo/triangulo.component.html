@@ -1,0 +1,38 @@
+<ion-card>
+    <ion-card-header>
+      <ion-card-title>Triángulo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Selecciona el tipo de triángulo y completa los valores requeridos para calcular el perímetro.</p>
+      <ion-img src="assets/images/triangulo.png" alt="Triángulo" style="width: 300px; height: auto;"></ion-img>
+      <ion-item>
+        <ion-label>Tipo de Triángulo</ion-label>
+        <ion-select [(ngModel)]="tipoTriangulo">
+          <ion-select-option value="escaleno">Escaleno</ion-select-option>
+          <ion-select-option value="equilatero">Equilátero</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="tipoTriangulo === 'escaleno'">
+        <ion-item>
+          <ion-label position="stacked">Lado A (cm)</ion-label>
+          <ion-input [(ngModel)]="ladoA" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Lado B (cm)</ion-label>
+          <ion-input [(ngModel)]="ladoB" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Lado C (cm)</ion-label>
+          <ion-input [(ngModel)]="ladoC" type="number"></ion-input>
+        </ion-item>
+      </div>
+      <div *ngIf="tipoTriangulo === 'equilatero'">
+        <ion-item>
+          <ion-label position="stacked">Lado (cm)</ion-label>
+          <ion-input [(ngModel)]="ladoA" type="number"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button expand="block" (click)="calcularPerimetro()">Calcular el perímetro</ion-button>
+      <p *ngIf="perimetro !== null">El perímetro del triángulo es: {{ perimetro }} cm</p>
+    </ion-card-content>
+  </ion-card>
